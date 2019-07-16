@@ -21,6 +21,7 @@ var Calculadora = {
     Calculadora.teclaIgual();
     Calculadora.teclaSuma();
     Calculadora.crearListeners();
+    Calculadora.limitarCaracteres();
   },
   teclaOn : function(){
     var on = document.getElementById('on');
@@ -193,97 +194,131 @@ var Calculadora = {
       suma.setAttribute("style", "transform:scale(1,1)");
     })
   },
-  realizarSuma : function(num1, num2){
-    var resultado = num1 + num2;
-    return resultado;
-  },
-  realizarResta : function(num1, num2){
-    var resultado = num1 - num2;
-    return resultado;
-  },
-  realizarDivision : function(num1, num2){
-    var resultado = num1 / num2;
-    return resultado;
-  },
-  realizarMultiplicacion : function (num1, num2){
-    var resultado = num1 * num2;
-    return resultado;
-  },
   crearListeners : function(){
     var self = this;
     document.getElementById("7").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
-        self.pantalla.textContent = "7"
-      }else{
-        self.pantalla.textContent += "7"
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
+          self.pantalla.textContent = "7"
+        }else{
+          self.pantalla.textContent += "7"
+        }
       }
     })
     document.getElementById("8").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
-        self.pantalla.textContent = "8"
-      }else{
-        self.pantalla.textContent += "8"
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
+          self.pantalla.textContent = "8"
+        }else{
+          self.pantalla.textContent += "8"
+        }
       }
     })
     document.getElementById("9").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
-        self.pantalla.textContent = "9"
-      }else{
-        self.pantalla.textContent += "9"
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
+          self.pantalla.textContent = "9"
+        }else{
+          self.pantalla.textContent += "9"
+        }
       }
     })
     document.getElementById("6").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
-        self.pantalla.textContent = "6"
-      }else{
-        self.pantalla.textContent += "6"
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
+          self.pantalla.textContent = "6"
+        }else{
+          self.pantalla.textContent += "6"
+        }
       }
     })
     document.getElementById("5").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
-        self.pantalla.textContent = "5"
-      }else{
-        self.pantalla.textContent += "5"
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
+          self.pantalla.textContent = "5"
+        }else{
+          self.pantalla.textContent += "5"
+        }
       }
     })
     document.getElementById("4").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
         self.pantalla.textContent = "4"
-      }else{
-        self.pantalla.textContent += "4"
+        }else{
+          self.pantalla.textContent += "4"
+        }
       }
     })
     document.getElementById("3").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
-        self.pantalla.textContent = "3"
-      }else{
-        self.pantalla.textContent += "3"
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
+          self.pantalla.textContent = "3"
+        }else{
+          self.pantalla.textContent += "3"
+        }
       }
     })
     document.getElementById("2").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
-        self.pantalla.textContent = "2"
-      }else{
-        self.pantalla.textContent += "2"
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
+          self.pantalla.textContent = "2"
+        }else{
+          self.pantalla.textContent += "2"
+        }
       }
     })
     document.getElementById("1").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
-        self.pantalla.textContent = "1"
-      }else{
-        self.pantalla.textContent += "1"
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
+          self.pantalla.textContent = "1"
+        }else{
+          self.pantalla.textContent += "1"
+        }
       }
     })
     document.getElementById("0").addEventListener("click", function(){
-      if (self.pantalla.textContent == "0") {
-        self.pantalla.textContent = "0"
-      }else{
-        self.pantalla.textContent += "0"
+      if(self.pantalla.textContent.length < 8){
+        if (self.pantalla.textContent == "0") {
+          self.pantalla.textContent = "0"
+        }else{
+          self.pantalla.textContent += "0"
+        }
       }
     })
     document.getElementById("on").addEventListener("click", function(){
       self.pantalla.textContent = "0"
     })
+    document.getElementById("punto").addEventListener("click", function(){
+      if (self.pantalla.textContent.indexOf('.') == -1) {
+        self.pantalla.textContent += "."
+      }
+    })
+    document.getElementById("sign").addEventListener("click", function(){
+      if (self.pantalla.textContent != "0") {
+        self.pantalla.textContent *= "-1"
+      }
+    })
+  },
+  limitarCaracteres : function(){
+    var self = this;
+    self.pantalla.innerHTML = self.pantalla.innerHTML.substring(0,7)
+  },
+  sumar : function(num1, num2){
+    var resultado = num1 + num2;
+    return resultado;
+  },
+  restar : function(num1, num2){
+    var resultado = num1 + num2;
+    return resultado;
+  },
+  multiplicar : function(num1, num2){
+    var resultado = num1 * num2;
+    return resultado;
+  },
+  dividir : function(num1, num2){
+    var resultado = num1 / num2;
+    return resultado;
   }
 }
 Calculadora.init();
